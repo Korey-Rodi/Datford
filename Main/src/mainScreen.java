@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
@@ -19,23 +20,34 @@ public class mainScreen {
 
         // Create panel and components
         JPanel panel = new JPanel();
-        panel.setBackground(Color.decode("#a5c2f0"));
+        panel.setBackground(Color.decode("#a6a2a2"));
         panel.setLayout(null);
         JLabel assetTag = new JLabel("Asset Tag:");
+        assetTag.setFont(new Font("Roboto", Font.BOLD, 14));
         JTextField assetTagEntry = new JTextField();
         JLabel serialNumber = new JLabel("Serial Number:");
+        serialNumber.setFont(new Font("Roboto", Font.BOLD, 14));
         JTextField serialNumberEntry = new JTextField();
         JLabel condition = new JLabel("Condition:");
+        condition.setFont(new Font("Roboto", Font.BOLD, 14));
         JTextField conditionEntry = new JTextField();
         JButton clearButton = new JButton("Clear");
         JButton submitButton = new JButton("Submit");
         JButton viewButton = new JButton("View File");
         JButton chooseFileButton = new JButton("Choose File");
 
+        // // Menu bar
+        // JMenuBar menuBar = new JMenuBar();      
+        // JMenu fileMenu = new JMenu("File");
+        // JMenuItem chooseFileMenuItem = new JMenuItem("Choose File");
+        // fileMenu.add(chooseFileMenuItem);
+        // menuBar.add(fileMenu);
+        // frame.setJMenuBar(menuBar);
+
         // Set bounds
         assetTag.setBounds(210,20,165,40);
         assetTagEntry.setBounds(100,45,300,40);
-        serialNumber.setBounds(200,70,100,40);
+        serialNumber.setBounds(200,70,400,40);
         serialNumberEntry.setBounds(100,95,300,40);
         condition.setBounds(210,120,100,40);
         conditionEntry.setBounds(100,145,300,40);
