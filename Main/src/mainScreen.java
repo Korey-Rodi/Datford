@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Font;
+//import java.awt.GridLayout;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
@@ -20,11 +21,13 @@ public class mainScreen {
 
         // Create panel and components
         JPanel panel = new JPanel();
-        panel.setBackground(Color.decode("#a6a2a2"));
         panel.setLayout(null);
+        panel.setBackground(Color.decode("#a6a2a2"));
         JLabel assetTag = new JLabel("Asset Tag:");
         assetTag.setFont(new Font("Roboto", Font.BOLD, 14));
         JTextField assetTagEntry = new JTextField();
+        //assetTagEntry.setBackground(Color.BLUE);
+        //assetTagEntry.setToolTipText("Enter asset tag here");
         JLabel serialNumber = new JLabel("Serial Number:");
         serialNumber.setFont(new Font("Roboto", Font.BOLD, 14));
         JTextField serialNumberEntry = new JTextField();
@@ -35,14 +38,8 @@ public class mainScreen {
         JButton submitButton = new JButton("Submit");
         JButton viewButton = new JButton("View File");
         JButton chooseFileButton = new JButton("Choose File");
+        chooseFileButton.setToolTipText(fileChoice);
 
-        // // Menu bar
-        // JMenuBar menuBar = new JMenuBar();      
-        // JMenu fileMenu = new JMenu("File");
-        // JMenuItem chooseFileMenuItem = new JMenuItem("Choose File");
-        // fileMenu.add(chooseFileMenuItem);
-        // menuBar.add(fileMenu);
-        // frame.setJMenuBar(menuBar);
 
         // Set bounds
         assetTag.setBounds(210,20,165,40);
@@ -74,7 +71,6 @@ public class mainScreen {
             serialNumberEntry.setText("");
             conditionEntry.setText("");
         });
-
         submitButton.addActionListener (e -> {
             try {
                 PrintStream fileOutput = new PrintStream(new FileOutputStream(fileChoice, true));
@@ -136,6 +132,7 @@ public class mainScreen {
             if (returnValue == JFileChooser.APPROVE_OPTION) {
                 java.io.File selectedFile = fileChooser.getSelectedFile();
                 fileChoice = selectedFile.getAbsolutePath();
+                chooseFileButton.setToolTipText(fileChoice);
             }
         });
 
@@ -155,6 +152,7 @@ public class mainScreen {
 
         return assetCount;
     }
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(mainScreen::new);
 
