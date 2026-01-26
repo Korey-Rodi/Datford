@@ -1,6 +1,5 @@
 import java.awt.Color;
 import java.awt.Font;
-//import java.awt.GridLayout;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
