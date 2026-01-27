@@ -1,11 +1,14 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import javax.swing.*;
 import java.util.Scanner;
 import java.io.File;
+import java.awt.Insets;
 
 public class mainScreen {
     private JFrame frame;
@@ -20,19 +23,24 @@ public class mainScreen {
 
         // Create panel and components
         JPanel panel = new JPanel();
-        panel.setLayout(null);
+        panel.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.insets = new Insets(5,5,5,5);
         panel.setBackground(Color.decode("#a6a2a2"));
         JLabel assetTag = new JLabel("Asset Tag:");
         assetTag.setFont(new Font("Roboto", Font.BOLD, 14));
-        JTextField assetTagEntry = new JTextField();
-        //assetTagEntry.setBackground(Color.BLUE);
-        //assetTagEntry.setToolTipText("Enter asset tag here");
+        JTextField assetTagEntry = new JTextField(30);
         JLabel serialNumber = new JLabel("Serial Number:");
         serialNumber.setFont(new Font("Roboto", Font.BOLD, 14));
-        JTextField serialNumberEntry = new JTextField();
+        JTextField serialNumberEntry = new JTextField(30);
         JLabel condition = new JLabel("Condition:");
         condition.setFont(new Font("Roboto", Font.BOLD, 14));
-        JTextField conditionEntry = new JTextField();
+        JTextField conditionEntry = new JTextField(30);
         JButton clearButton = new JButton("Clear");
         JButton submitButton = new JButton("Submit");
         JButton viewButton = new JButton("View File");
@@ -40,29 +48,26 @@ public class mainScreen {
         chooseFileButton.setToolTipText(fileChoice);
 
 
-        // Set bounds
-        assetTag.setBounds(210,20,165,40);
-        assetTagEntry.setBounds(100,45,300,40);
-        serialNumber.setBounds(200,70,400,40);
-        serialNumberEntry.setBounds(100,95,300,40);
-        condition.setBounds(210,120,100,40);
-        conditionEntry.setBounds(100,145,300,40);
-        clearButton.setBounds(100,250,300,40);
-        submitButton.setBounds(100,300,300,40);
-        viewButton.setBounds(100,350,300,40);
-        chooseFileButton.setBounds(100,400,300,40);
-
         // add components to panel
-        panel.add(assetTag);
-        panel.add(assetTagEntry);
-        panel.add(serialNumber);
-        panel.add(serialNumberEntry);
-        panel.add(condition);
-        panel.add(conditionEntry);
-        panel.add(clearButton);
-        panel.add(submitButton);
-        panel.add(viewButton);
-        panel.add(chooseFileButton);
+        panel.add(chooseFileButton, gbc);
+        gbc.gridy++;
+        panel.add(viewButton, gbc);
+        gbc.gridy++;
+        panel.add(assetTag, gbc);
+        gbc.gridy++;
+        panel.add(assetTagEntry, gbc);
+        gbc.gridy++;
+        panel.add(serialNumber, gbc);
+        gbc.gridy++;
+        panel.add(serialNumberEntry, gbc);
+        gbc.gridy++;
+        panel.add(condition, gbc);
+        gbc.gridy++;
+        panel.add(conditionEntry, gbc);
+        gbc.gridy++;
+        panel.add(clearButton, gbc);
+        gbc.gridy++;
+        panel.add(submitButton, gbc);
 
         // Action listeners
         clearButton.addActionListener(e -> {
